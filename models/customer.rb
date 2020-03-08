@@ -64,4 +64,8 @@ class Customer
     return booked_films.map {|film| Film.new(film)}
   end
 
+  def no_tickets
+    films.count
+  end
+
 end
