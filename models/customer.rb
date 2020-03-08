@@ -54,5 +54,14 @@ class Customer
   end
 
   #List of booked movies
+  def films
+    sql = "SELECT * FROM tickets
+          INNER JOIN films
+          ON films.id = tickets.film_id
+          WHERE customer_id = $1"
+    values = [@id]
+    booked_films = SqlRunner.run(sql, values)
+    return booked_films.map {|film| Film.new(film)}
+  end
 
 end

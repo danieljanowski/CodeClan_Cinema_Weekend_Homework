@@ -16,7 +16,7 @@ class Ticket
             ($1, $2)
             RETURNING id"
     values = [@customer_id, @film_id]
-    @id = SqlRunner.run(sql, values)
+    @id = SqlRunner.run(sql, values).first['id'].to_i
   end
 
   def update
